@@ -1,0 +1,44 @@
+---
+title: "Correlation between Flipper Length and Body Mass
+on Palmerpenguins Dataset"
+author: "Muhammad Hasan Ibrahim"
+date: '2022-05-03'
+output: html_document
+---
+
+## Setting up my environment
+Notes: Setting up my R envronment by installing the "tidyverse" and 
+"palmerpenguins" packages.
+
+```{r loading packages}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+## Visualization
+Here we will go throuh a series of visualization
+
+### Flipper and body mass in purple
+Here, we plot flipper length againts body mass. The plot shows a positive correlation between flipper length and body mass.
+```{r visualize flipper length and body mass in purple}
+ggplot(data=penguins)+
+  geom_point(mapping=aes(x=flipper_length_mm, y=body_mass_g, color="purple"))+
+  geom_smooth(mapping=aes(x=flipper_length_mm, y=body_mass_g))
+```
+
+### Flipper and body mass by species
+Here, we plot flipper length against body mass by species. The plot shows a positive correlation between flipper length and body mass specified by species.
+```{r species}
+ggplot(data=penguins)+
+  geom_point(mapping=aes(x=flipper_length_mm, y=body_mass_g, shape=species, color="purple"))+
+  geom_smooth(mapping=aes(x=flipper_length_mm, y=body_mass_g))
+```
+
+### Flipper and body mass by species and sex
+Here, we plot flipper length against body mass by species and sex. The plots show positive correlation between flipper length and body mass specified by species and sex.
+```{r species and sex}
+ggplot(data=penguins)+
+  geom_point(mapping=aes(x=flipper_length_mm, y=body_mass_g, color=species, shape=species))+
+  facet_wrap(~sex)
+```
+
